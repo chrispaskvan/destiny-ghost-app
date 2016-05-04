@@ -1,0 +1,10 @@
+#mainMenu1 {
+    background-color: black;
+}
+.ui.form .field > div > label {
+    margin: 0 0 .2857rem;
+    color: rgba(0,0,0,.8);
+    font-size: .9285em;
+    font-weight: 700;
+    text-transform: none;
+}

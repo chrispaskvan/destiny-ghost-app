@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <title>Destiny Ghost</title>
+    <base href="/">
+    <script data-require="angular.js@1.5.x" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js" data-semver="1.5.5"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-resource.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+    <script data-require="jquery@2.2.0" data-semver="2.2.0" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script data-require="semantic-ui@1.11.5" data-semver="1.11.5" src="//cdn.jsdelivr.net/semantic-ui/1.11.4/semantic.min.js"></script>
+    <link data-require="semantic-ui@1.11.5" data-semver="1.11.5" rel="stylesheet" href="//cdn.jsdelivr.net/semantic-ui/1.11.5/semantic.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
+    <link rel="stylesheet" href="/styles/app.css">
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+</head>
+<body ng-app="DestinyGhostApp" ng-cloak>
+<div class="ui container">
+    <div id="mainMenu1">
+        <div class="ui large secondary inverted pointing menu">
+            <a class="toc item">
+                <i class="sidebar icon"></i>
+            </a>
+            <a class="active item">Home</a>
+            <div class="right item">
+                <a class="ui inverted button">Log in</a>
+                <a href="/register" class="ui inverted button">Sign Up</a>
+            </div>
+        </div>
+    </div>
+    <ng-view></ng-view>
+</div>
+    <script src="/globals.js"></script>
+    <script src="/app.js"></script>
+    <!-- services -->
+    <script src="/services/userServices.js"></script>
+    <!-- /services -->
+    <!-- directives -->
+    <script src="/directives/ngForm.js"></script>
+    <script src="/directives/semantic/dropdown.js"></script>
+    <script src="/directives/semantic/popup.js"></script>
+    <script src="/directives/uniqueEmailAddress.js"></script>
+    <!-- /directives -->
+    <!-- controllers -->
+    <script src="/controllers/homeController.js"></script>
+    <script src="/controllers/registerController.js"></script>
+    <script src="/controllers/confirmationController.js"></script>
+    <!-- controllers -->
+</body>
+</html>
