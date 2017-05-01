@@ -1,4 +1,4 @@
-(function () {
+(function (angular, destinyGhost) {
     'use strict';
     angular.module(destinyGhost.globals.appName)
         .directive('dgSemanticPopup', dgSemanticPopup);
@@ -11,6 +11,6 @@
         return directive;
         function linkFunc(scope, element, attrs) {
             $(element).popup();
-        };
+        }
     }
-})();
+})(angular, destinyGhost);

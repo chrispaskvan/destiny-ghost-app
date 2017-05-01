@@ -3,6 +3,6 @@
  */
 (function (destinyGhost) {
   (function (globals) {
-    globals.appName = "DestinyGhostApp";
+    globals.appName = 'DestinyGhostApp';
   } (destinyGhost.globals = destinyGhost.globals || {}));
 } (window.destinyGhost = window.destinyGhost || {}));

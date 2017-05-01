@@ -1,4 +1,4 @@
-(function () {
+(function (angular, destinyGhost) {
     'use strict';
     angular.module(destinyGhost.globals.appName)
         .directive('dgSemanticDropdown', dgSemanticDropdown);
@@ -18,6 +18,6 @@
                     });
                 }
             });
-        };
+        }
     }
-})();
+})(angular, destinyGhost);

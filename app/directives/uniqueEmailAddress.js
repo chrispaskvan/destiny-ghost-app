@@ -17,16 +17,18 @@
         
         function linkFunc(scope, element, attrs, ngModel) {
             element.bind('blur', function (e) {
-                if (!ngModel || !element.val()) return;
+                if (!ngModel || !element.val()) {
+                    return;
+                }
                 var currentValue = element.val();
                 scope.vm.isEmailAddressUnique(currentValue)
                     .then(function (unique) {
-                        if (currentValue == element.val()) {
+                        if (currentValue === element.val()) {
                             ngModel.$setValidity('unique', unique);
                         }
                     });
             });
-        };
+        }
     }
 
     UniqueEmailAddressController.$inject = ['userServices'];
@@ -42,6 +44,6 @@
                     console.log(err);
                     return false;
                 });
-        }
+        };
     }
-})();
+}(angular));
