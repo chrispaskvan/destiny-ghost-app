@@ -19,28 +19,6 @@
         </div>
     </div>
     <div class="two fields">
-        <div class="field" data-ng-class="{'error': vm.signUpForm.membershipType.$touched && !vm.signUpForm.membershipType.$valid}">
-            <label for="membershipType1">Console:</label>
-            <select name="membershipType" id="membershipType1" class="ui dropdown" data-ng-model="vm.user.membershipType" data-ng-options="membershipType.text for membershipType in su.user.membershipTypes track by membershipType.value"
-                    data-dg-semantic-dropdown required>
-                <option value="">Select your console...</option>
-            </select>
-            <div data-ng-show="vm.signUpForm.membershipType.$touched && !vm.signUpForm.membershipType.$valid">
-                <span class="ui basic red pointing prompt label transition visible">Please select a console</span>
-            </div>
-        </div>
-        <div class="field" data-ng-class="{'error': vm.signUpForm.gamerTag.$touched && !vm.signUpForm.gamerTag.$valid}">
-            <label for="gamerTag1">Gamer Tag/PSN ID:</label>
-            <div class="ui icon input">
-                <i class="search icon"></i>
-                <input name="gamerTag" id="gamerTag1" data-ng-model="vm.user.gamerTag" maxlength="63" required />
-            </div>
-            <div data-ng-show="vm.signUpForm.gamerTag.$touched && !vm.signUpForm.gamerTag.$valid">
-                <span class="ui basic red pointing prompt label transition visible">Please enter your gamer tag/PSN ID</span>
-            </div>
-        </div>
-    </div>
-    <div class="two fields">
         <div class="field" data-ng-class="{'error': vm.signUpForm.phoneNumber.$touched && !vm.signUpForm.phoneNumber.$valid}">
             <div class="ui icon">
                 <label for="phoneNumber1">Phone Number:</label>
@@ -61,8 +39,7 @@
                 <i class="popup help icon link" data-content="Your email address serves as an additional identification method in case you lose your phone." data-dg-semantic-popup></i>
             </div>
             <div class="ui icon input loading">
-                <input name="emailAddress" id="emailAddress1" type="email" data-ng-model="vm.user.emailAddress" data-dg-unique-email-address
-                       maxlength="60" required/>
+                <input name="emailAddress" id="emailAddress1" type="email" data-ng-model="vm.user.emailAddress"
                 <i class="search icon"></i>
             </div>
             <div data-ng-show="vm.signUpForm.emailAddress.$touched && vm.signUpForm.emailAddress.$error.unique">
@@ -74,9 +51,40 @@
         </div>
     </div>
     <div>
-        <button type="submit" value="Register" class="ui right labeled icon button">
+        <button id="submit-button" type="submit" value="Register" class="ui right labeled icon button">
             <i class="right arrow icon"></i>
             Next
         </button>
+    </div>
+</div>
+<!-- ToDo: Use constants to combined 2 modals into 1.-->
+<div id="success" class="ui small basic modal transition">
+    <div class="ui icon header">
+        <i class="send outline icon"></i>
+        Thank you! Confirmation codes are on the way.
+    </div>
+    <div class="content">
+        <p>You should receive a confirmation code in a text message from me shortly and an email with directions on how to proceed.</p>
+    </div>
+    <div class="actions">
+        <div class="ui blue ok inverted button">
+            <a href="/"><i class="checkmark icon"></i>
+                Okay</a>
+        </div>
+    </div>
+</div>
+<div id="failure" class="ui small basic modal transition">
+    <div class="ui icon header">
+        <i class="send outline icon"></i>
+        Sorry! That email address and/or phone number are already registered.
+    </div>
+    <div class="content">
+        <p>You should receive a confirmation code in a text message from me shortly and an email with directions on how to proceed.</p>
+    </div>
+    <div class="actions">
+        <div class="ui blue ok inverted button">
+            <a href="#"><i class="checkmark icon"></i>
+            Okay</a>
+        </div>
     </div>
 </div>

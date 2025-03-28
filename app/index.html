@@ -1,98 +1,105 @@
 <!doctype html>
 <html>
-<head>
-  <title>Destiny Ghost</title>
-    <base href="/">
-    <script data-require="angular.js@1.5.x" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js" data-semver="1.5.5"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-resource.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-78152046-1', 'auto');
-    </script>
-    <script data-require="jquery@2.2.0" data-semver="2.2.0" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script data-require="semantic-ui@1.11.5" data-semver="1.11.5" src="//cdn.jsdelivr.net/semantic-ui/1.11.4/semantic.min.js"></script>
-    <link data-require="semantic-ui@1.11.5" data-semver="1.11.5" rel="stylesheet" href="//cdn.jsdelivr.net/semantic-ui/1.11.5/semantic.min.css"/>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
-    <link rel="stylesheet" href="/styles/app.css">
-    <style>
+    <head>
+      <title>Destiny Ghost</title>
+        <base href="/">
+        <script data-require="angular.js@1.5.x" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js" data-semver="1.5.5"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-resource.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-sanitize.min.js"></script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-78152046-1', 'auto');
+        </script>
+        <script data-require="jquery@2.2.0" data-semver="2.2.0" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script data-require="semantic-ui@1.11.5" data-semver="1.11.5" src="//cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+        <link data-require="semantic-ui@1.11.5" data-semver="1.11.5" rel="stylesheet" href="//cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css"/>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
+        <link rel="stylesheet" href="/styles/app.css">
+        <style>
 
-    </style>
-</head>
-<body ng-app="DestinyGhostApp">
+        </style>
+    </head>
+    <body ng-app="DestinyGhostApp" ng-controller="HeaderController as vm">
+        <div class="ui fluid container">
+            <div id="mainMenu1">
+                <div class="ui attached menu large inverted pointing">
+                    <a class="item">
+                        <i class="sidebar icon"></i>
+                        Menu
+                        <img class="avatar ui image transition hidden"><!--Defaults height to an avatar.-->
+                    </a>
+                    <div class="item">Destiny-Ghost</div>
+                    <a class="item right floated transition hidden" ng-href="{{ vm.signInUrl }}" ng-if="!vm.isLoading && !vm.user" data-dg-semantic-fade-up>
+                        <i class="inverted sign in icon"></i>
+                        Sign In
+                    </a>
+                    <div class="item right floated transition hidden" ng-if="!vm.isLoading && vm.user" data-dg-semantic-fade-up>
+                        <img class="avatar ui image" src="{{ vm.getProfilePictureUrl() }}">
+                        <div>{{ vm.user.displayName }}
+                            <div class="sub" style="font-size: 0.75rem;">{{ vm.getBungieMembershipType() }}</div>
+                        </div>
+                    </div>
+                </div>
 
-<div class="ui container">
-    <div id="mainMenu1">
-
-        <div class="ui attached menu large inverted pointing">
-            <a class="item">
-                <i class="sidebar icon"></i>
-                Menu
-            </a>
-        </div>
-
-        <div class="ui bottom attached segment">
-
-            <div class="ui inverted labeled icon left inline vertical sidebar menu">
-                <a class="item">
-                    <i class="home icon"></i>
-                    Home
-                </a>
-                <a class="item">
-                    <i class="block layout icon"></i>
-                    Topics
-                </a>
-                <a class="item">
-                    <i class="smile icon"></i>
-                    Friends
-                </a>
-                <a class="item">
-                    <i class="calendar icon"></i>
-                    History
-                </a>
-            </div>
-
-
-            <div class="pusher">
-                <div class="ui basic segment">
-                    <ng-view></ng-view>
+                <div class="ui bottom attached segment">
+                    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+                        <a class="item">
+                            <i class="home icon"></i>
+                            Home
+                        </a>
+                        <a class="item">
+                            <i class="crosshairs icon"></i>
+                            Vendors
+                        </a>
+                        <a class="item">
+                            <i class="game icon"></i>
+                            Clan
+                        </a>
+                        <a class="item" ng-click="vm.signOut()" ng-if="vm.user">
+                            <i class="sign out icon"></i>
+                            Sign Out
+                        </a>
+                    </div>
+                    <div class="pusher">
+                        <div class="ui basic segment">
+                            <ng-view></ng-view>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
 
-
-    </div>
-</div>
-
-    <script src="/globals.js"></script>
-    <script src="/app.js"></script>
-    <!-- services -->
-    <script src="/services/userServices.js"></script>
-    <!-- /services -->
-    <!-- directives -->
-    <script src="/directives/ngForm.js"></script>
-    <script src="/directives/semantic/dropdown.js"></script>
-    <script src="/directives/semantic/popup.js"></script>
-    <script src="/directives/uniqueEmailAddress.js"></script>
-    <!-- /directives -->
-    <!-- controllers -->
-    <script src="/controllers/homeController.js"></script>
-    <script src="/controllers/registerController.js"></script>
-    <script src="/controllers/confirmationController.js"></script>
-    <!-- controllers -->
-    <script src="/signUp/signUp.controller.js"></script>
-<script>
-    $('.ui.left.sidebar').sidebar({
-        context: $('#mainMenu1 .bottom.segment'),
-        transition: 'overlay'
-    });
-    // left is opened by button
-    $('.ui.left.sidebar')
-            .sidebar('attach events', '.ui.menu .item');
-</script>
-</body>
+        <script src="/globals.js"></script>
+        <script src="/app.js"></script>
+        <!-- services -->
+        <script src="/services/destinyServices.js"></script>
+        <script src="/services/userServices.js"></script>
+        <!-- /services -->
+        <!-- directives -->
+        <script src="/directives/ngForm.js"></script>
+        <script src="/directives/semantic/dropdown.js"></script>
+        <script src="/directives/semantic/fadeUp.js"></script>
+        <script src="/directives/semantic/popup.js"></script>
+        <script src="/directives/uniqueEmailAddress.js"></script>
+        <!-- /directives -->
+        <!-- controllers -->
+        <script src="/controllers/headerController.js"></script>
+        <script src="/controllers/homeController.js"></script>
+        <script src="/join/join.controller.js"></script>
+        <script src="/signUp/signUp.controller.js"></script>
+        <!-- controllers -->
+        <script>
+            $('.ui.left.sidebar').sidebar({
+                context: $('#mainMenu1 .bottom.segment'),
+                transition: 'overlay'
+            });
+            // left is opened by button
+            $('.ui.left.sidebar')
+                    .sidebar('attach events', '.ui.menu .item');
+        </script>
+    </body>
 </html>
