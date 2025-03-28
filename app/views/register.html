@@ -19,28 +19,6 @@
         </div>
     </div>
     <div class="two fields">
-        <div class="field" data-ng-class="{'error': vm.registrationForm.membershipType.$touched && !vm.registrationForm.membershipType.$valid}">
-            <label for="membershipType1">Console:</label>
-            <select name="membershipType" id="membershipType1" class="ui dropdown" data-ng-model="vm.user.membershipType" data-ng-options="membershipType.text for membershipType in vm.user.membershipTypes track by membershipType.value"
-                data-dg-semantic-dropdown required>
-          <option value="">Select your console...</option>
-        </select>
-            <div data-ng-show="vm.registrationForm.membershipType.$touched && !vm.registrationForm.membershipType.$valid">
-                <span class="ui basic red pointing prompt label transition visible">Please select a console</span>
-            </div>
-        </div>
-        <div class="field" data-ng-class="{'error': vm.registrationForm.gamerTag.$touched && !vm.registrationForm.gamerTag.$valid}">
-            <label for="gamerTag1">Gamer Tag/PSN ID:</label>
-            <div class="ui icon input">
-                <i class="search icon"></i>
-                <input name="gamerTag" id="gamerTag1" data-ng-model="vm.user.gamerTag" maxlength="63" required />
-            </div>
-            <div data-ng-show="vm.registrationForm.gamerTag.$touched && !vm.registrationForm.gamerTag.$valid">
-                <span class="ui basic red pointing prompt label transition visible">Please enter your gamer tag/PSN ID</span>
-            </div>
-        </div>
-    </div>
-    <div class="two fields">
         <div class="field" data-ng-class="{'error': vm.registrationForm.phoneNumber.$touched && !vm.registrationForm.phoneNumber.$valid}">
             <div class="ui icon">
                 <label for="phoneNumber1">Phone Number:</label>
@@ -61,7 +39,7 @@
                 <i class="popup help icon link" data-content="Your email address serves as an additional identification method in case you lose your phone." data-dg-semantic-popup></i>
             </div>
             <div class="ui icon input loading">
-                <input name="emailAddress" id="emailAddress1" type="email" data-ng-model="vm.user.emailAddress" data-dg-unique-email-address
+                <input name="emailAddress" id="emailAddress1" type="email" data-ng-model="vm.user.emailAddress"
                     maxlength="60" required/>
                 <i class="search icon"></i>
             </div>

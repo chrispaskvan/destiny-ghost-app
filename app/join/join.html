@@ -1,0 +1,21 @@
+<div id="success" class="ui small basic modal transition">
+    <div class="ui icon header">
+        <i class="unlock outline icon"></i>
+        Welcome back! Enter your confirmation code below.
+    </div>
+    <div class="content" data-ng-form data-ng-submit="vm.join()" name="vm.joinForm">
+        <div class="ui one column stackable center aligned page grid">
+            <div class="column twelve">
+                <div class="ui center action icon input labeled" data-ng-class="{'error': vm.joinForm.confirmationCode.$touched && !vm.joinForm.confirmationCode.$valid}">
+                    <input name="confirmationCode"
+                           id="confirmationCode1"
+                           type="text"
+                           placeholder=" Confirmation Code..."
+                           data-ng-model="vm.confirmationCode"
+                           required />
+                    <button class="ui button" type="submit">Go</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

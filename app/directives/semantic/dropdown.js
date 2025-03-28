@@ -8,7 +8,9 @@
             restrict: 'A',
             link: linkFunc
         };
+
         return directive;
+
         function linkFunc(scope, element, attrs) {
             var modelAccessor = $parse(attrs.ngModel);
             $(element).dropdown({

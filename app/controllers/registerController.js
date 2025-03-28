@@ -6,7 +6,7 @@
     function RegisterController() {
       var vm = this;
       vm.user = {
-        firstName: '',
+        firstName: 'ddddd',
         gamerTag: '',
         lastName: '',
         membershipType: undefined,

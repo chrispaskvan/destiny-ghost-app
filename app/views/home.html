@@ -1,2 +1,19 @@
-<h1>I'm the homepage view</h1>
-<h2>{{testvar}}</h2>
+<div class="ui shape">
+    <div class="sides" ng-repeat="grimoireCard in vm.grimoireCards">
+        <div class="side" ng-class="{ active: $first }">
+            <div class="ui card">
+                <div class="image">
+                    <img ng-src="https://www.bungie.net{{grimoireCard.highResolution.image.sheetPath}}">
+                </div>
+                <div class="content">
+                    <div class="header">
+                        <span ng-bind-html="grimoireCard.cardName"></span>
+                    </div>
+                    <div class="description">
+                        <p ng-bind-html="grimoireCard.cardDescription"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
