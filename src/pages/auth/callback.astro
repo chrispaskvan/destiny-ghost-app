@@ -1,0 +1,9 @@
+---
+export const prerender = false;
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Callback from '../../components/Callback.jsx';
+---
+
+<BaseLayout title="Signing In...">
+  <Callback client:load />
+</BaseLayout>

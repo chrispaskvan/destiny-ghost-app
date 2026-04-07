@@ -1,0 +1,31 @@
+---
+import { version } from '../../package.json';
+import '../styles/global.css';
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Destiny-Ghost" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="build-version" content={version} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=optional"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=optional" />
+    </noscript>
+  </head>
+  <body class="font-display antialiased" style="min-height: max(884px, 100dvh); background-color: #000;">
+    <slot />
+  </body>
+</html>

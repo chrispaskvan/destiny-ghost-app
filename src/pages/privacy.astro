@@ -1,0 +1,85 @@
+---
+import PolicyLayout from '../layouts/PolicyLayout.astro';
+import { SUPPORT_EMAIL } from '../config/site';
+---
+
+<PolicyLayout title="Privacy Policy — Destiny-Ghost" heading="PRIVACY POLICY" backHref="/about">
+
+  <div class="space-y-2">
+    <h1 class="text-medium font-medium tracking-[0.3em] text-white uppercase">Privacy Policy</h1>
+    <p class="text-xs text-white/30 tracking-wide">Effective date: January 1, 2026</p>
+  </div>
+
+  <div class="space-y-10">
+
+    <div class="space-y-3">
+      <p class="text-sm tracking-[0.25em] text-white uppercase">Overview</p>
+      <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+        Destiny-Ghost operates an SMS and MMS notification service for Destiny players. This policy explains what information is collected, how it is used, and your rights regarding that information.
+      </p>
+    </div>
+
+    <div class="space-y-3">
+      <p class="text-sm tracking-[0.25em] text-white uppercase">Information Collected</p>
+      <ul class="space-y-3">
+        <li class="flex gap-3"><span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary sm:mt-2"></span><span class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80"><strong class="font-medium text-white/90">Bungie account data</strong> — display name and membership ID, obtained via Bungie OAuth at sign-in.</span></li>
+        <li class="flex gap-3"><span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary sm:mt-2"></span><span class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80"><strong class="font-medium text-white/90">Mobile phone number and email address</strong> — collected at registration when you voluntarily opt in to SMS notifications.</span></li>
+        <li class="flex gap-3"><span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary sm:mt-2"></span><span class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80"><strong class="font-medium text-white/90">Messaging consent</strong> — the date, time, and method by which you opted in to receive messages.</span></li>
+        <li class="flex gap-3"><span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary sm:mt-2"></span><span class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80"><strong class="font-medium text-white/90">Message history</strong> — inbound texts you send and outbound notifications delivered to you.</span></li>
+      </ul>
+    </div>
+
+    <div class="space-y-3">
+      <p class="text-sm tracking-[0.25em] text-white uppercase">How Your Information Is Used</p>
+      <ul class="space-y-3">
+        <li class="flex gap-3"><span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary sm:mt-2"></span><span class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">To deliver weapon search results and game notifications via SMS/MMS.</span></li>
+        <li class="flex gap-3"><span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary sm:mt-2"></span><span class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">To authenticate your Bungie account and personalize notifications to your characters.</span></li>
+        <li class="flex gap-3"><span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary sm:mt-2"></span><span class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">To honor opt-out requests and maintain suppression records.</span></li>
+      </ul>
+    </div>
+
+    <div class="space-y-3">
+      <p class="text-sm tracking-[0.25em] text-white uppercase">SMS Consent & Third-Party Sharing</p>
+      <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+        Your mobile phone number and SMS opt-in consent are used solely to deliver Destiny-Ghost notifications and respond to your inquiries. <strong class="font-medium text-white/90">Text messaging originator opt-in data and consent will not be shared with, sold to, or bought by any third parties or affiliates for marketing or promotional purposes.</strong> All categories of personal data exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.
+      </p>
+    </div>
+
+    <div class="space-y-3">
+      <p class="text-sm tracking-[0.25em] text-white uppercase">Data Retention</p>
+      <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+        Your account data is retained for as long as your account is active. If you opt out of SMS messaging, your phone number is moved to a suppression list and no further messages will be sent. You may request deletion of your data at any time by contacting us.
+      </p>
+    </div>
+
+    <div class="space-y-3">
+      <p class="text-sm tracking-[0.25em] text-white uppercase">Third-Party Services</p>
+      <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+        Twilio transmits SMS and MMS messages and Bungie's public API retrieves game data. These services operate under their own privacy policies. Your personal data is never shared with or sold to any other third parties.
+      </p>
+    </div>
+
+    <div class="space-y-3">
+      <p class="text-sm tracking-[0.25em] text-white uppercase">Your Rights</p>
+      <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+        You may request access to, correction of, or deletion of your personal data at any time. To exercise these rights or to opt out of SMS messaging, contact us at <a href={`mailto:${SUPPORT_EMAIL}`} class="text-white/70 underline underline-offset-4 hover:text-white transition-colors">{SUPPORT_EMAIL}</a>.
+      </p>
+    </div>
+
+    <div class="space-y-3">
+      <p class="text-sm tracking-[0.25em] text-white uppercase">Changes to This Policy</p>
+      <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+        This policy may be updated from time to time. The effective date at the top of this page reflects the most recent revision. Continued use of the service after changes constitutes acceptance of the updated policy.
+      </p>
+    </div>
+
+    <div class="space-y-3">
+      <p class="text-sm tracking-[0.25em] text-white uppercase">Contact</p>
+      <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+        Questions about this policy? Email us at <a href={`mailto:${SUPPORT_EMAIL}`} class="text-white/70 underline underline-offset-4 hover:text-white transition-colors">{SUPPORT_EMAIL}</a>.
+      </p>
+    </div>
+
+  </div>
+
+</PolicyLayout>

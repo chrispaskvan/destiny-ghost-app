@@ -1,0 +1,81 @@
+---
+import PolicyLayout from '../layouts/PolicyLayout.astro';
+import { SUPPORT_EMAIL } from '../config/site';
+---
+
+<PolicyLayout title="Terms of Service — Destiny-Ghost" heading="TERMS OF SERVICE" backHref="/about">
+
+  <div class="space-y-2">
+    <h1 class="text-medium font-medium tracking-[0.3em] text-white uppercase">Terms of Service</h1>
+    <p class="text-xs text-white/30 tracking-wide">Effective date: January 1, 2026</p>
+  </div>
+
+  <div class="space-y-10">
+
+    <div class="space-y-3">
+      <p class="text-sm tracking-[0.25em] text-white uppercase">Service</p>
+      <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+        Destiny-Ghost sends SMS and MMS messages concerning Destiny weapons, vendors, and players. Message frequency varies based on user preferences and activity. Message and data rates may apply. Use of this service is subject to these terms.
+      </p>
+    </div>
+
+    <div class="space-y-3">
+      <p class="text-sm tracking-[0.25em] text-white uppercase">Opt-In</p>
+      <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+        You enroll in Destiny-Ghost by providing your mobile number during registration and checking the consent box, which is unchecked by default. Enrollment is optional and is not required to use the service.
+      </p>
+    </div>
+
+    <div class="space-y-3">
+      <p class="text-sm tracking-[0.25em] text-white uppercase">Opt-Out & Help</p>
+      <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+        Reply <strong>STOP</strong> to cancel. You will receive one final confirmation and no further messages will be sent. Reply <strong>START</strong> or <strong>UNSTOP</strong> to re-enroll.<br /><br />
+        Reply <strong>HELP</strong> for help. You may also contact support at <a href={`mailto:${SUPPORT_EMAIL}`} class="text-white/70 underline underline-offset-4 hover:text-white transition-colors">{SUPPORT_EMAIL}</a>.
+      </p>
+    </div>
+
+    <div class="space-y-3">
+      <p class="text-sm tracking-[0.25em] text-white uppercase">Carrier Disclaimer</p>
+      <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+        Carriers are not liable for any delayed or undelivered messages.
+      </p>
+    </div>
+
+    <div class="space-y-3">
+      <p class="text-sm tracking-[0.25em] text-white uppercase">Acceptable Use</p>
+      <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+        You agree to use this service only for its intended purpose. You must be the authorized user or account holder of the mobile number you provide. You may not use the service for unlawful purposes or to harass others.
+      </p>
+    </div>
+
+    <div class="space-y-3">
+      <p class="text-sm tracking-[0.25em] text-white uppercase">Disclaimers</p>
+      <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+        This service is provided as-is without warranties of any kind. Game data is sourced from Bungie's public API. Destiny-Ghost is not affiliated with, maintained, or endorsed by Bungie. We are not responsible for inaccurate or outdated game data.
+      </p>
+    </div>
+
+    <div class="space-y-3">
+      <p class="text-sm tracking-[0.25em] text-white uppercase">Privacy</p>
+      <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+        Your use of this service is also governed by our <a href="/privacy" class="text-white/70 underline underline-offset-4 hover:text-white transition-colors">Privacy Policy</a>, which is incorporated into these terms by reference.
+      </p>
+    </div>
+
+    <div class="space-y-3">
+      <p class="text-sm tracking-[0.25em] text-white uppercase">Changes to These Terms</p>
+      <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+        We may update these terms at any time. The effective date at the top of this page reflects the most recent revision. Continued use of the service after changes constitutes acceptance of the updated terms.
+      </p>
+    </div>
+
+    <div class="space-y-3">
+      <p class="text-sm tracking-[0.25em] text-white uppercase">Contact</p>
+      <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+        Questions? Email <a href={`mailto:${SUPPORT_EMAIL}`} class="text-white/70 underline underline-offset-4 hover:text-white transition-colors">{SUPPORT_EMAIL}</a>.
+      </p>
+    </div>
+
+  </div>
+
+</PolicyLayout>

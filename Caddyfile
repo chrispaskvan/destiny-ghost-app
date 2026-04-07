@@ -1,0 +1,4 @@
+app2.destiny-ghost.com:8443 {
+	tls {env.TLS_CERT_PATH} {env.TLS_KEY_PATH}
+	reverse_proxy 127.0.0.1:1101
+}
