@@ -2,6 +2,9 @@
     "name": "modern-astro-site",
     "type": "module",
     "version": "0.0.11",
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "scripts": {
         "build": "astro build",
         "start:production": "node server.mjs",

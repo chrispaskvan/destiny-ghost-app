@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import node from '@astrojs/node';
 import react from '@astrojs/react';
-import tailwindcss from '@tailwindcss/vite';
+import tailwindVite from '@tailwindcss/vite';
 
 // Get ngrok URL from environment variable if available
 const ngrokUrl = globalThis.process?.env?.NGROK_URL || '';
@@ -16,7 +16,7 @@ export default defineConfig({
   adapter: node({ mode: 'middleware' }),
   integrations: [react()],
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindVite()],
     server: {
       host: '0.0.0.0',
       port: 1101,
