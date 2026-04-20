@@ -6,7 +6,6 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import astro from 'eslint-plugin-astro';
 import astroParser from 'astro-eslint-parser';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
-import tailwindcss from 'eslint-plugin-tailwindcss';
 
 export default [
   js.configs.recommended,
@@ -26,7 +25,6 @@ export default [
       react: react,
       'react-hooks': reactHooks,
       'jsx-a11y': jsxA11y,
-      tailwindcss: tailwindcss,
       security: security,
     },
     settings: {
@@ -38,9 +36,6 @@ export default [
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-      'tailwindcss/no-custom-classname': 'off',
-      'tailwindcss/classnames-order': 'warn',
-      'tailwindcss/no-contradicting-classname': 'error',
     },
   },
   {
