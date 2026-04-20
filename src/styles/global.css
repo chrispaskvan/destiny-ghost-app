@@ -1,7 +1,10 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss";
 
+@theme {
+  --color-primary: #38e07b;
+  --color-obsidian: #050505;
+  --font-display: 'Space Grotesk', sans-serif;
+}
 
 .bg-noise {
   position: fixed;
