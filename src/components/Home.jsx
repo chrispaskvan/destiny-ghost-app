@@ -4,8 +4,14 @@ import { API_CONFIG, API_ENDPOINTS } from '../config/api';
 import GhostLogo from './GhostLogo';
 
 const Home = () => {
-  const { isLoading, isAuthenticated, user, bungieSignInUrl, signOut, error, clearError, authSuccess, clearAuthSuccess } = useAuth();
+  const { isLoading, isAuthenticated, isRegistered, user, bungieSignInUrl, signOut, error, clearError, authSuccess, clearAuthSuccess } = useAuth();
   const [worldVersion, setWorldVersion] = useState(null);
+
+  useEffect(() => {
+    if (!isLoading && isAuthenticated && !isRegistered) {
+      window.location.assign('/register');
+    }
+  }, [isLoading, isAuthenticated, isRegistered]);
 
   useEffect(() => {
     fetch(`${API_CONFIG.BASE_URL}${API_ENDPOINTS.HEALTH}`)
@@ -36,9 +42,16 @@ const Home = () => {
         <a href="/" className="group flex size-12 items-center justify-center rounded-full transition-colors hover:bg-transparent active:scale-95">
           <GhostLogo className="text-white opacity-80 transition-opacity group-hover:opacity-100" />
         </a>
-        <a href="/about" className="text-xs font-medium tracking-[0.3em] text-white opacity-60 transition-opacity duration-300 hover:opacity-100">
-          ABOUT
-        </a>
+        <nav className="flex items-center gap-6 md:gap-8">
+          {isAuthenticated && (
+            <a href="/profile" className="text-xs font-medium tracking-[0.3em] text-white opacity-60 transition-opacity duration-300 hover:opacity-100">
+              PROFILE
+            </a>
+          )}
+          <a href="/about" className="text-xs font-medium tracking-[0.3em] text-white opacity-60 transition-opacity duration-300 hover:opacity-100">
+            ABOUT
+          </a>
+        </nav>
       </header>
 
       <main className="relative z-10 flex flex-grow flex-col items-center justify-center gap-8 px-4">
