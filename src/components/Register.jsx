@@ -128,8 +128,11 @@ const Register = () => {
                 <Field label="Email Address" type="email" value={form.emailAddress} onChange={setField('emailAddress')} autoComplete="email" required />
               </div>
 
-              <label className="flex items-start gap-3">
+              {/* The Terms/Privacy links live outside the label so clicking
+                  them can never toggle the consent checkbox. */}
+              <div className="flex items-start gap-3">
                 <input
+                  id="sms-consent"
                   type="checkbox"
                   checked={consent}
                   onChange={(event) => setConsent(event.target.checked)}
@@ -137,13 +140,16 @@ const Register = () => {
                   className="mt-0.5 size-4 shrink-0 accent-white"
                 />
                 <span className="text-[11px] leading-relaxed tracking-wider text-white/40">
-                  I agree to receive SMS text notifications from Destiny Ghost at the phone
-                  number provided. Message frequency varies. Message and data rates may apply.
-                  Reply STOP to unsubscribe or HELP for help. See our{' '}
+                  <label htmlFor="sms-consent" className="cursor-pointer">
+                    I agree to receive SMS text notifications from Destiny Ghost at the phone
+                    number provided. Message frequency varies. Message and data rates may apply.
+                    Reply STOP to unsubscribe or HELP for help.
+                  </label>{' '}
+                  See our{' '}
                   <a href="/terms" className="underline underline-offset-2 hover:text-white/70">Terms</a> and{' '}
                   <a href="/privacy" className="underline underline-offset-2 hover:text-white/70">Privacy Policy</a>.
                 </span>
-              </label>
+              </div>
 
               <button
                 type="submit"

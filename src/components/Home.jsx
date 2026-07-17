@@ -43,7 +43,7 @@ const Home = () => {
           <GhostLogo className="text-white opacity-80 transition-opacity group-hover:opacity-100" />
         </a>
         <nav className="flex items-center gap-6 md:gap-8">
-          {isAuthenticated && (
+          {isAuthenticated && isRegistered && (
             <a href="/profile" className="text-xs font-medium tracking-[0.3em] text-white opacity-60 transition-opacity duration-300 hover:opacity-100">
               PROFILE
             </a>
