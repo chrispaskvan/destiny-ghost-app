@@ -1,7 +1,7 @@
 import { API_CONFIG, API_ENDPOINTS } from '../config/api';
 
 const apiFetch = (path, options) =>
-  fetch(`${API_CONFIG.BASE_URL}${path}`, { credentials: 'include', ...options });
+  fetch(`${API_CONFIG.BASE_URL}${path}`, { ...options, credentials: 'include' });
 
 const jsonHeaders = { 'Content-Type': 'application/json' };
 
@@ -37,7 +37,9 @@ export const userService = {
   async updateProfile(patchOps, etag) {
     const res = await apiFetch(API_ENDPOINTS.USER.UPDATE, {
       method: 'PATCH',
-      headers: { ...jsonHeaders, 'If-Match': etag },
+      // Omit If-Match when no ETag is known — the API answers 428, a clearer
+      // signal than the guaranteed 412 from a literal "null" header.
+      headers: { ...jsonHeaders, ...(etag && { 'If-Match': etag }) },
       body: JSON.stringify(patchOps),
     });
     return { ok: res.ok, stale: res.status === 412 };

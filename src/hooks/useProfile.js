@@ -18,9 +18,9 @@ export function useProfile() {
         displayName: 'Guardian',
         dateRegistered: '2026-01-25T00:00:00Z',
         firstName: 'John',
-        lastName: 'Paskvan',
-        emailAddress: 'john.paskvan@apricothill.com',
-        phoneNumber: '+16304807607',
+        lastName: 'Doe',
+        emailAddress: 'john.doe@example.com',
+        phoneNumber: '+16305550147',
         notifications: [
           { type: 'Xur', enabled: true },
           { type: 'Banshee-44', enabled: true },
@@ -67,7 +67,7 @@ export function useProfile() {
   }, []);
 
   const isDirty = !!user && draft.some(
-    (enabled, index) => enabled !== user.notifications[index].enabled
+    (enabled, index) => enabled !== user.notifications?.[index]?.enabled
   );
 
   const buildOps = (notifications) => draft
@@ -97,8 +97,8 @@ export function useProfile() {
           window.location.replace('/');
           return;
         }
-        setUser(fresh.user);
-        setEtag(fresh.etag);
+        // Retry with locals only — load() below re-syncs user, etag, and
+        // draft together, so component state never desyncs mid-save.
         const freshOps = buildOps(fresh.user.notifications || []);
         result = freshOps.length
           ? await userService.updateProfile(freshOps, fresh.etag)
