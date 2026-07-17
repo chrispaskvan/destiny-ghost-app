@@ -9,7 +9,7 @@ const Home = () => {
 
   useEffect(() => {
     if (!isLoading && isAuthenticated && !isRegistered) {
-      window.location.assign('/register');
+      window.location.replace('/register');
     }
   }, [isLoading, isAuthenticated, isRegistered]);
 
