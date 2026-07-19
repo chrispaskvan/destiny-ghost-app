@@ -14,7 +14,9 @@
         "caddy:reload": "sudo env $(grep -v '^#' .env.development | grep '^TLS_' | xargs) caddy reload --config Caddyfile",
         "dev:https": "npm run caddy:start && npm run dev:caddy",
         "lint": "eslint --ext .js,.jsx,.astro src/",
-        "lint:fix": "eslint --fix --ext .js,.jsx,.astro src/"
+        "lint:fix": "eslint --fix --ext .js,.jsx,.astro src/",
+        "test:e2e": "playwright test",
+        "test:e2e:ui": "playwright test --ui"
     },
     "dependencies": {
         "@astrojs/node": "^10.0.5",
@@ -27,6 +29,8 @@
     },
     "devDependencies": {
         "@eslint/js": "^10.0.1",
+        "@playwright/test": "^1.61.1",
+        "@tailwindcss/vite": "^4.2.2",
         "eslint": "^10.2.1",
         "eslint-plugin-astro": "^1.7.0",
         "eslint-plugin-jsx-a11y": "^6.9.0",
@@ -34,7 +38,6 @@
         "eslint-plugin-react-hooks": "^7.1.1",
         "eslint-plugin-security": "^4.0.0",
         "globals": "^17.5.0",
-        "@tailwindcss/vite": "^4.2.2",
         "tailwindcss": "^4.2.2"
     },
     "overrides": {

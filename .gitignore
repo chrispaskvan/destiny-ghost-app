@@ -23,3 +23,11 @@ dist/
 
 # Claude Code local session data
 .claude/
+
+# Playwright
+playwright-report/
+test-results/
+
+# Local working notes and compliance screenshots (not site assets)
+tasks/
+public/screenshots/

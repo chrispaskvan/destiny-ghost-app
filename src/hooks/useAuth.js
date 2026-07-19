@@ -52,6 +52,7 @@ export function useAuth() {
     error,
     authSuccess,
     isAuthenticated: !!user,
+    isRegistered: !!user?.dateRegistered,
     user,
     bungieSignInUrl,
     signOut,

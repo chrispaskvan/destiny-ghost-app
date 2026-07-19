@@ -17,5 +17,8 @@ export const API_ENDPOINTS = {
   HEALTH: '/health',
   USER: {
     SIGNOUT: '/users/signout',
+    SIGNUP: '/users/signUp',
+    JOIN: '/users/join',
+    UPDATE: '/users',
   },
 };

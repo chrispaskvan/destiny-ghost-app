@@ -16,6 +16,9 @@ export default defineConfig({
   adapter: node({ mode: 'middleware' }),
   integrations: [react()],
   vite: {
+    // Astro only exposes PUBLIC_-prefixed vars to client code by default;
+    // this app's env contract (.env.example) uses the VITE_ prefix.
+    envPrefix: ['VITE_', 'PUBLIC_'],
     plugins: [tailwindVite()],
     server: {
       host: '0.0.0.0',
