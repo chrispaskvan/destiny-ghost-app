@@ -37,4 +37,7 @@ test('saves subscription toggles with If-Match optimistic concurrency', async ({
   await expect(page.getByRole('switch').first()).toHaveAttribute('aria-checked', 'false');
   await expect(page.getByRole('switch').nth(1)).toHaveAttribute('aria-checked', 'true');
   await expect(save).toBeDisabled();
+
+  // Both PATCHes echoed the synchronizer token, including the one retried after 412.
+  expect(api.calls.csrf).toEqual(['e2e-csrf-token', 'e2e-csrf-token', 'e2e-csrf-token']);
 });

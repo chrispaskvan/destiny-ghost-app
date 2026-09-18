@@ -1,0 +1,229 @@
+---
+import PolicyLayout from '../layouts/PolicyLayout.astro';
+import { COMPANY } from '../config/site';
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: COMPANY.name,
+  url: 'https://app.destiny-ghost.com/apricothill',
+  description:
+    'Independent software studio building and operating consumer messaging applications, including the Destiny-Ghost SMS service.',
+  foundingDate: String(COMPANY.since),
+  founder: {
+    '@type': 'Person',
+    name: COMPANY.owner,
+  },
+  email: COMPANY.email,
+  telephone: COMPANY.phone,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: COMPANY.address.locality,
+    addressRegion: COMPANY.address.region,
+    addressCountry: COMPANY.address.country,
+  },
+  sameAs: [COMPANY.github],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer support',
+    email: COMPANY.email,
+    telephone: COMPANY.phone,
+    availableLanguage: 'English',
+  },
+  makesOffer: {
+    '@type': 'Offer',
+    itemOffered: {
+      '@type': 'SoftwareApplication',
+      name: 'Destiny-Ghost',
+      applicationCategory: 'UtilitiesApplication',
+      url: 'https://app.destiny-ghost.com/',
+    },
+  },
+};
+
+const activity = [
+  {
+    date: 'October 2015',
+    detail: 'Destiny-Ghost service started. First commit to the public API repository.',
+  },
+  {
+    date: '2016 – 2025',
+    detail:
+      'Continuous development and operation, with public commit history in every calendar year.',
+  },
+  {
+    date: 'April 2026',
+    detail: 'New web front end begun — Astro and React, replacing the previous interface.',
+  },
+  {
+    date: 'August 2026',
+    detail:
+      'Carrier-compliant STOP and HELP opt-out handling, brand prefix on all outbound messages, opt-in welcome SMS on registration, and inbound MMS support.',
+  },
+  {
+    date: 'September 2026',
+    detail: 'Most recent production release.',
+  },
+];
+---
+
+<PolicyLayout title="Apricot Hill" heading="APRICOT HILL" backHref="/">
+
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(organizationSchema)} />
+
+  <!-- Company Overview -->
+  <section class="space-y-5">
+    <h1 class="text-medium font-medium tracking-[0.3em] text-white uppercase">Who We Are</h1>
+    <p class="text-base sm:text-lg md:text-xl font-light leading-relaxed tracking-wide text-white/90">
+      Apricot Hill is an independent software studio in {COMPANY.address.locality}, {COMPANY.address.region}. It is a {COMPANY.entity} owned and operated by {COMPANY.owner}, and has been building and running consumer messaging software since {COMPANY.since}.
+    </p>
+    <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/50">
+      The studio designs, operates, and supports its own software directly — there is no reseller, agency, or third party between Apricot Hill and the people who use its products.
+    </p>
+  </section>
+
+  <div class="h-px w-full bg-white/10"></div>
+
+  <!-- Services -->
+  <section class="space-y-12">
+    <h2 class="text-medium font-medium tracking-[0.3em] text-white uppercase">What We Do</h2>
+
+    <div class="space-y-10">
+
+      <div class="space-y-2">
+        <p class="text-sm tracking-[0.25em] text-white uppercase">Conversational Messaging</p>
+        <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+          Two-way SMS and MMS interfaces that let people query a service in plain text and get an answer back, without installing an application.
+        </p>
+      </div>
+
+      <div class="space-y-2">
+        <p class="text-sm tracking-[0.25em] text-white uppercase">Notification Services</p>
+        <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+          Opt-in alerting built on scheduled and event-driven triggers, with per-subscriber preferences, consent records, and opt-out handling.
+        </p>
+      </div>
+
+      <div class="space-y-2">
+        <p class="text-sm tracking-[0.25em] text-white uppercase">API Integration</p>
+        <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+          Integration with third-party platform APIs — including Bungie's Destiny API for game data and Twilio for message delivery — along with the OAuth flows, caching, and rate limiting that keep them reliable.
+        </p>
+      </div>
+
+      <div class="space-y-2">
+        <p class="text-sm tracking-[0.25em] text-white uppercase">Web Applications</p>
+        <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+          Front ends for the services above: account registration, authentication, preference management, and self-service opt-out.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="h-px w-full bg-white/10"></div>
+
+  <!-- Products -->
+  <section class="space-y-12">
+    <h2 class="text-medium font-medium tracking-[0.3em] text-white uppercase">Products</h2>
+
+    <div class="space-y-10">
+
+      <div class="space-y-2">
+        <p class="text-sm tracking-[0.25em] text-white uppercase">Destiny-Ghost</p>
+        <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+          An SMS interface for players of Bungie's <em>Destiny</em>. Subscribers text a weapon name and receive its stats back; those who opt in also receive alerts when the vendor Xur arrives, when Banshee-44's inventory refreshes, and when Iron Banner begins. In continuous operation since {COMPANY.since}.
+        </p>
+        <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+          <a href="/" class="text-white/70 underline underline-offset-4 hover:text-white transition-colors">app.destiny-ghost.com</a>
+          <span class="text-white/30"> · </span>
+          <a href="/about" class="text-white/70 underline underline-offset-4 hover:text-white transition-colors">Service and SMS program details</a>
+        </p>
+        <p class="text-xs font-light leading-relaxed tracking-wide text-white/40">
+          Not affiliated with, maintained, or endorsed by Bungie.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="h-px w-full bg-white/10"></div>
+
+  <!-- Business Activity -->
+  <section class="space-y-12">
+    <h2 class="text-medium font-medium tracking-[0.3em] text-white uppercase">Business Activity</h2>
+
+    <div class="space-y-10">
+
+      <div class="space-y-2">
+        <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+          Apricot Hill's work is developed in the open. The Destiny-Ghost service has over 500 public commits spanning eleven consecutive years, and the repositories are available for review at <a href={COMPANY.github} class="text-white/70 underline underline-offset-4 hover:text-white transition-colors">{COMPANY.github.replace('https://', '')}</a>.
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        {activity.map((entry) => (
+          <div class="space-y-1">
+            <p class="text-sm tracking-[0.25em] text-white uppercase">{entry.date}</p>
+            <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+              {entry.detail}
+            </p>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <div class="h-px w-full bg-white/10"></div>
+
+  <!-- Contact -->
+  <section class="space-y-12">
+    <h2 class="text-medium font-medium tracking-[0.3em] text-white uppercase">Contact</h2>
+
+    <div class="space-y-10">
+
+      <div class="space-y-2">
+        <p class="text-sm tracking-[0.25em] text-white uppercase">Email</p>
+        <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+          <a href={`mailto:${COMPANY.email}`} class="text-white/70 underline underline-offset-4 hover:text-white transition-colors">{COMPANY.email}</a>
+        </p>
+      </div>
+
+      <div class="space-y-2">
+        <p class="text-sm tracking-[0.25em] text-white uppercase">Phone</p>
+        <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+          <a href={COMPANY.phoneHref} class="text-white/70 underline underline-offset-4 hover:text-white transition-colors">{COMPANY.phone}</a>
+        </p>
+      </div>
+
+      <div class="space-y-2">
+        <p class="text-sm tracking-[0.25em] text-white uppercase">Address</p>
+        <address class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80 not-italic">
+          <span class="block">{COMPANY.name}</span>
+          <span class="block">{COMPANY.address.locality}, {COMPANY.address.region}</span>
+          <span class="block">{COMPANY.address.country}</span>
+        </address>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="h-px w-full bg-white/10"></div>
+
+  <!-- Policies -->
+  <section class="space-y-12">
+    <h2 class="text-medium font-medium tracking-[0.3em] text-white uppercase">Policies</h2>
+
+    <div class="space-y-2">
+      <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+        <a href="/privacy" class="text-white/70 underline underline-offset-4 hover:text-white transition-colors">Privacy Policy</a>
+        <span class="text-white/30"> · </span>
+        <a href="/terms" class="text-white/70 underline underline-offset-4 hover:text-white transition-colors">Terms of Service</a>
+        <span class="text-white/30"> · </span>
+        <a href="/about" class="text-white/70 underline underline-offset-4 hover:text-white transition-colors">SMS Program Terms</a>
+      </p>
+    </div>
+  </section>
+
+</PolicyLayout>

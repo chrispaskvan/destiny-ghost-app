@@ -27,7 +27,8 @@ export async function mockApi(page) {
       { type: 'Xur', enabled: true },
       { type: 'Banshee-44', enabled: false },
     ],
-    calls: { signUp: [], join: [], patch: [] },
+    csrfToken: 'e2e-csrf-token',
+    calls: { signUp: [], join: [], patch: [], csrf: [] },
   };
 
   // Guards first (last-registered route wins): any unmocked /api request
@@ -42,6 +43,13 @@ export async function mockApi(page) {
 
   await page.route('**/api/health', (route) =>
     route.fulfill({ json: { destiny2: { world: 'e2e-world' } } }),
+  );
+
+  // Must be registered before **/api/users/current: Playwright matches the
+  // last-registered route first, and this path would otherwise fall through
+  // to the unmocked guard, failing every mutating call that awaits a token.
+  await page.route('**/api/users/current/csrfToken', (route) =>
+    route.fulfill({ json: { csrfToken: state.csrfToken } }),
   );
 
   await page.route('**/api/users/current', (route) =>
@@ -59,11 +67,13 @@ export async function mockApi(page) {
 
   await page.route('**/api/users/signUp', (route) => {
     state.calls.signUp.push(route.request().postDataJSON());
+    state.calls.csrf.push(route.request().headers()['x-csrf-token'] ?? null);
     return route.fulfill({ status: 204 });
   });
 
   await page.route('**/api/users/join', (route) => {
     state.calls.join.push(route.request().postDataJSON());
+    state.calls.csrf.push(route.request().headers()['x-csrf-token'] ?? null);
     state.registered = true;
     return route.fulfill({ status: 200, json: {} });
   });
@@ -73,6 +83,7 @@ export async function mockApi(page) {
     const ifMatch = request.headers()['if-match'] ?? null;
     const ops = request.postDataJSON();
     state.calls.patch.push({ ifMatch, ops });
+    state.calls.csrf.push(request.headers()['x-csrf-token'] ?? null);
     if (ifMatch !== state.etag) return route.fulfill({ status: 412 });
     for (const { path, value } of ops) {
       state.notifications[Number(path.split('/')[2])].enabled = value;

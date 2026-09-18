@@ -24,6 +24,7 @@ const { title } = Astro.props;
     <noscript>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=optional" />
     </noscript>
+    <slot name="head" />
   </head>
   <body class="font-display antialiased" style="min-height: max(884px, 100dvh); background-color: #000;">
     <slot />

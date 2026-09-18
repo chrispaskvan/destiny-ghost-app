@@ -10,6 +10,7 @@ export const API_ENDPOINTS = {
   AUTH: {
     BUNGIE_SIGNIN: '/users/signin/bungie',
     CURRENT_USER: '/users/current',
+    CSRF_TOKEN: '/users/current/csrfToken',
   },
   DESTINY: {
     SIGNIN_URL: '/destiny/signIn',
