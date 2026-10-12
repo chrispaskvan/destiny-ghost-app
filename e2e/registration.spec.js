@@ -20,7 +20,7 @@ test('first-time user registers end to end', async ({ page }) => {
 
   const signUp = page.getByRole('button', { name: 'SIGN UP' });
   await expect(signUp).toBeDisabled();
-  await page.getByRole('checkbox').check();
+  await page.locator('#account-consent').check();
   await expect(signUp).toBeEnabled();
   await signUp.click();
 
@@ -56,4 +56,7 @@ test('first-time user registers end to end', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'SIGN OUT' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'PROFILE' })).toBeVisible();
   await expect(page).toHaveURL(/\/$/);
+
+  // Every mutating call echoed the synchronizer token from GET /users/current/csrfToken.
+  expect(api.calls.csrf).toEqual(['e2e-csrf-token', 'e2e-csrf-token']);
 });

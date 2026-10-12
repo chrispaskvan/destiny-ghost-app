@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { API_CONFIG, API_ENDPOINTS } from '../config/api';
 import GhostLogo from './GhostLogo';
+import { COMPANY } from '../config/site';
 
 const Home = () => {
   const { isLoading, isAuthenticated, isRegistered, user, bungieSignInUrl, signOut, error, clearError, authSuccess, clearAuthSuccess } = useAuth();
@@ -92,11 +93,18 @@ const Home = () => {
         )}
       </main>
 
-      <footer className="relative z-10 flex w-full items-center justify-center pb-8 pt-4">
+      <footer className="relative z-10 flex w-full flex-col items-center gap-3 pb-8 pt-4">
         <div className={`flex items-center gap-2 transition-opacity duration-500 ${worldVersion ? 'opacity-30' : 'opacity-0'}`}>
           <span className="h-px w-8 bg-white" />
           <p className="font-mono text-[10px] uppercase tracking-widest text-white">{worldVersion || ''}</p>
           <span className="h-px w-8 bg-white" />
+        </div>
+        <div className="flex flex-col items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-white/40">
+          <span>Destiny-Ghost is operated by <a href="/apricothill" className="transition-colors hover:text-white/80">{COMPANY.name}</a> and owned by {COMPANY.owner} · {COMPANY.address.locality}, {COMPANY.address.region}</span>
+          <nav className="flex items-center gap-4">
+            <a href="/privacy" className="transition-colors hover:text-white/80">Privacy</a>
+            <a href="/terms" className="transition-colors hover:text-white/80">Terms</a>
+          </nav>
         </div>
       </footer>
 

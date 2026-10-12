@@ -1,6 +1,6 @@
 ---
 import PolicyLayout from '../layouts/PolicyLayout.astro';
-import { SUPPORT_EMAIL } from '../config/site';
+import { COMPANY, SUPPORT_EMAIL } from '../config/site';
 ---
 
 <PolicyLayout title="About — Destiny-Ghost" heading="ABOUT" backHref="/">
@@ -9,10 +9,10 @@ import { SUPPORT_EMAIL } from '../config/site';
   <section class="space-y-5">
     <h1 class="text-medium font-medium tracking-[0.3em] text-white uppercase">What is Destiny-Ghost</h1>
     <p class="text-base sm:text-lg md:text-xl font-light leading-relaxed tracking-wide text-white/90">
-      Destiny-Ghost is an SMS interface for Destiny players. Text a weapon name and get stats back instantly. Receive alerts when Xur arrives or vendor inventory resets. Your Ghost, in your pocket.
+      Destiny-Ghost is an SMS interface for <a href="https://www.bungie.net/7/en/Destiny" class="text-white underline underline-offset-4 hover:text-white/80 transition-colors">Destiny</a> players. Text a weapon name and get stats back instantly. Receive alerts when Xur arrives or vendor inventory resets. Your Ghost, in your pocket.
     </p>
     <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/50">
-      Not affiliated with, maintained, or endorsed by Bungie.
+      Not affiliated with, maintained, or endorsed by Bungie. Destiny-Ghost is operated by <a href="/apricothill" class="text-white/70 underline underline-offset-4 hover:text-white transition-colors">Apricot Hill</a> and owned by Chris Paskvan.
     </p>
   </section>
 
@@ -34,7 +34,7 @@ import { SUPPORT_EMAIL } from '../config/site';
       <div class="space-y-2">
         <p class="text-sm tracking-[0.25em] text-white uppercase">Opt-In</p>
         <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
-          By providing your mobile phone number and checking the consent box during registration, you agree to receive SMS and MMS messages from Destiny-Ghost. The consent checkbox is unchecked by default and is separate from any other agreements. Consent is not required to access the service.
+          Registration presents two separate consent checkboxes, each unchecked by default. Account &amp; verification consent covers phone verification codes and is required to register. Marketing consent covers vendor and weapon alert notifications (Xur, Banshee-44, Iron Banner) and is optional — you can register without it.
         </p>
       </div>
 
@@ -44,21 +44,37 @@ import { SUPPORT_EMAIL } from '../config/site';
           Upon enrollment you will receive a confirmation message:
         </p>
         <p class="mt-3 border border-white/10 bg-white/5 px-4 py-3 font-mono text-xs leading-relaxed text-white/70">
-          Welcome to Destiny-Ghost! Message frequency varies. Msg &amp; data rates may apply. Reply HELP for help, STOP to cancel.
+          Destiny-Ghost: Enter 482913 to verify your phone number. Up to 10 msgs/week. Msg &amp; data rates may apply. Reply HELP for help, STOP to cancel.
+        </p>
+      </div>
+
+      <div class="space-y-2">
+        <p class="text-sm tracking-[0.25em] text-white uppercase">Message Examples</p>
+        <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+          Every message type sent through Destiny-Ghost:
+        </p>
+        <p class="mt-3 border border-white/10 bg-white/5 px-4 py-3 font-mono text-xs leading-relaxed text-white/70">
+          Destiny-Ghost: Xur has arrived at the Tower. Reply with a weapon name to check his inventory. Reply STOP to unsubscribe.
+        </p>
+        <p class="mt-3 border border-white/10 bg-white/5 px-4 py-3 font-mono text-xs leading-relaxed text-white/70">
+          Destiny-Ghost: Banshee-44's gunsmith inventory has refreshed for the week. Reply STOP to unsubscribe.
+        </p>
+        <p class="mt-3 border border-white/10 bg-white/5 px-4 py-3 font-mono text-xs leading-relaxed text-white/70">
+          Destiny-Ghost: Gjallarhorn — Rocket Launcher. 1 in the chamber, 5 spare. Wolfpack Rounds. Impact 90 / Blast Radius 100. Reply STOP to unsubscribe.
         </p>
       </div>
 
       <div class="space-y-2">
         <p class="text-sm tracking-[0.25em] text-white uppercase">Message Frequency</p>
         <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
-          Message frequency varies. Vendor and Xur alerts are sent on their respective reset schedules. Weapon search responses are sent on demand.
+          Message frequency varies, up to 10 messages per week. Vendor and Xur alerts are sent on their respective reset schedules. Weapon search responses are sent on demand.
         </p>
       </div>
 
       <div class="space-y-2">
         <p class="text-sm tracking-[0.25em] text-white uppercase">Rates</p>
         <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
-          Message and data rates may apply.
+          Destiny-Ghost is free to use. Your carrier's standard message and data rates may still apply.
         </p>
       </div>
 
@@ -73,6 +89,19 @@ import { SUPPORT_EMAIL } from '../config/site';
         <p class="text-sm tracking-[0.25em] text-white uppercase">Help</p>
         <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
           Reply <strong>HELP</strong> for assistance. You can also contact support at <a href={`mailto:${SUPPORT_EMAIL}`} class="text-white/70 underline underline-offset-4 hover:text-white transition-colors">{SUPPORT_EMAIL}</a>.
+        </p>
+      </div>
+
+      <div class="space-y-2">
+        <p class="text-sm tracking-[0.25em] text-white uppercase">Business Contact</p>
+        <address class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80 not-italic">
+          <span class="block">{COMPANY.name}</span>
+          <span class="block">{COMPANY.address.locality}, {COMPANY.address.region}, {COMPANY.address.country}</span>
+          <span class="block"><a href={`mailto:${COMPANY.email}`} class="text-white/70 underline underline-offset-4 hover:text-white transition-colors">{COMPANY.email}</a></span>
+          <span class="block"><a href={COMPANY.phoneHref} class="text-white/70 underline underline-offset-4 hover:text-white transition-colors">{COMPANY.phone}</a></span>
+        </address>
+        <p class="text-sm sm:text-base font-light leading-relaxed tracking-wide text-white/80">
+          More about the company that operates Destiny-Ghost: <a href="/apricothill" class="text-white/70 underline underline-offset-4 hover:text-white transition-colors">Apricot Hill</a>.
         </p>
       </div>
 

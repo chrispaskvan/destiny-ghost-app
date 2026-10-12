@@ -20,7 +20,8 @@ const Register = () => {
   const [emailToken, setEmailToken] = useState(null);
   const [error, setError] = useState(null);
   const [form, setForm] = useState({ firstName: '', lastName: '', phoneNumber: '', emailAddress: '' });
-  const [consent, setConsent] = useState(false);
+  const [accountConsent, setAccountConsent] = useState(false);
+  const [marketingConsent, setMarketingConsent] = useState(false);
   const [smsCode, setSmsCode] = useState('');
 
   useEffect(() => {
@@ -128,32 +129,57 @@ const Register = () => {
                 <Field label="Email Address" type="email" value={form.emailAddress} onChange={setField('emailAddress')} autoComplete="email" required />
               </div>
 
-              {/* The Terms/Privacy links live outside the label so clicking
-                  them can never toggle the consent checkbox. */}
-              <div className="flex items-start gap-3">
-                <input
-                  id="sms-consent"
-                  type="checkbox"
-                  checked={consent}
-                  onChange={(event) => setConsent(event.target.checked)}
-                  required
-                  className="mt-0.5 size-4 shrink-0 accent-white"
-                />
-                <span className="text-[11px] leading-relaxed tracking-wider text-white/40">
-                  <label htmlFor="sms-consent" className="cursor-pointer">
-                    I agree to receive SMS text notifications from Destiny Ghost at the phone
-                    number provided. Message frequency varies. Message and data rates may apply.
-                    Reply STOP to unsubscribe or HELP for help.
-                  </label>{' '}
+              {/* Two separate opt-ins, per carrier requirements: account/
+                  verification texts (non-marketing, required to register)
+                  and vendor/weapon alerts (marketing, optional). Kept as
+                  distinct checkboxes rather than one blanket consent. */}
+              <div className="flex flex-col gap-4">
+                <div className="flex items-start gap-3">
+                  <input
+                    id="account-consent"
+                    type="checkbox"
+                    checked={accountConsent}
+                    onChange={(event) => setAccountConsent(event.target.checked)}
+                    required
+                    className="mt-0.5 size-4 shrink-0 accent-white"
+                  />
+                  <label htmlFor="account-consent" className="cursor-pointer text-[11px] leading-relaxed tracking-wider text-white/40">
+                    I agree to receive account and verification SMS text messages from
+                    Destiny-Ghost (including phone verification codes) at the phone number
+                    provided. Message and data rates may apply. Reply STOP to unsubscribe or
+                    HELP for help.
+                  </label>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <input
+                    id="marketing-consent"
+                    type="checkbox"
+                    checked={marketingConsent}
+                    onChange={(event) => setMarketingConsent(event.target.checked)}
+                    className="mt-0.5 size-4 shrink-0 accent-white"
+                  />
+                  <label htmlFor="marketing-consent" className="cursor-pointer text-[11px] leading-relaxed tracking-wider text-white/40">
+                    I agree to receive SMS text messages from Destiny-Ghost about
+                    Destiny 2 vendor and weapon alerts (Xur, Banshee-44, Iron Banner) at the
+                    phone number provided. Message frequency varies, up to 10 messages per
+                    week. Message and data rates may apply. Reply STOP to unsubscribe or HELP
+                    for help.
+                  </label>
+                </div>
+
+                {/* Outside both labels so clicking these links can never
+                    toggle a checkbox. */}
+                <p className="text-[11px] leading-relaxed tracking-wider text-white/40">
                   See our{' '}
                   <a href="/terms" className="underline underline-offset-2 hover:text-white/70">Terms</a> and{' '}
                   <a href="/privacy" className="underline underline-offset-2 hover:text-white/70">Privacy Policy</a>.
-                </span>
+                </p>
               </div>
 
               <button
                 type="submit"
-                disabled={status === 'sending' || !consent}
+                disabled={status === 'sending' || !accountConsent}
                 className="group relative flex h-16 w-full items-center justify-center border border-white/20 bg-transparent transition-all duration-300 hover:border-white/40 disabled:opacity-30"
               >
                 <span className="text-sm font-bold tracking-[0.25em] text-white/70 transition-all duration-300 group-hover:text-white">
