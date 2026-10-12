@@ -13,6 +13,9 @@ const useProxy = globalThis.process?.env?.USE_PROXY === 'true';
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
+  // Astro 7 defaults to 'jsx', which strips whitespace between inline elements.
+  // Keep the pre-7 behavior so the A2P-approved policy pages render unchanged.
+  compressHTML: true,
   adapter: node({ mode: 'middleware' }),
   integrations: [react()],
   vite: {
@@ -40,7 +43,6 @@ export default defineConfig({
       }),
       allowedHosts: [
         'app2.destiny-ghost.com',
-        '27c4-2604-2d80-7201-9c00-b0f5-d746-4522-f1d0.ngrok-free.app',
         ngrokHost,
         '.ngrok.io',
         '.ngrok-free.app',

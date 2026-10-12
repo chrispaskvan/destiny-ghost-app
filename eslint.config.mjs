@@ -4,7 +4,6 @@ import security from 'eslint-plugin-security';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import astro from 'eslint-plugin-astro';
-import astroParser from 'astro-eslint-parser';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 
 export default [
@@ -38,16 +37,11 @@ export default [
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
     },
   },
+  // Registers the astro plugin and astro-eslint-parser for .astro files.
+  ...astro.configs.recommended,
   {
     files: ['**/*.astro'],
     languageOptions: {
-      parser: astroParser,
-      parserOptions: {
-        extraFileExtensions: ['.astro'],
-        ecmaFeatures: {
-          globalReturn: true,
-        },
-      },
       globals: {
         Astro: 'readonly',
         console: 'readonly',
@@ -55,13 +49,6 @@ export default [
         navigator: 'readonly',
         window: 'readonly',
       },
-    },
-    plugins: {
-      astro: astro,
-    },
-    rules: {
-      // Basic Astro rules without trying to spread configs that might not exist
-      'astro/no-set-html-directive': 'off',
     },
   },
 ];
