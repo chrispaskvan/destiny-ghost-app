@@ -13,6 +13,9 @@ const useProxy = globalThis.process?.env?.USE_PROXY === 'true';
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
+  // Astro 7 defaults to 'jsx', which strips whitespace between inline elements.
+  // Keep the pre-7 behavior so the A2P-approved policy pages render unchanged.
+  compressHTML: true,
   adapter: node({ mode: 'middleware' }),
   integrations: [react()],
   vite: {

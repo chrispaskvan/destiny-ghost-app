@@ -13,7 +13,9 @@ export default defineConfig({
   webServer: {
     // Dedicated port so the tests never reuse the regular dev server on 1101,
     // whose env (and therefore API base URL) is outside our control.
-    command: 'npx astro dev --host 127.0.0.1 --port 1105',
+    // --ignore-lock: Astro 7 allows one dev server per project and otherwise
+    // exits (or backgrounds itself) when another is running.
+    command: 'npx astro dev --host 127.0.0.1 --port 1105 --ignore-lock',
     url: 'http://127.0.0.1:1105',
     reuseExistingServer: !process.env.CI,
     timeout: 120_000, // first run does Vite dep optimization
