@@ -43,7 +43,6 @@ export default defineConfig({
       }),
       allowedHosts: [
         'app2.destiny-ghost.com',
-        '27c4-2604-2d80-7201-9c00-b0f5-d746-4522-f1d0.ngrok-free.app',
         ngrokHost,
         '.ngrok.io',
         '.ngrok-free.app',

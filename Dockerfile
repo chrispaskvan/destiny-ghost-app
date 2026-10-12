@@ -1,4 +1,4 @@
-ARG NODE_VERSION=24.14.0
+ARG NODE_VERSION=26.11.1
 
 # Build stage
 FROM node:${NODE_VERSION}-slim AS builder
@@ -10,8 +10,8 @@ RUN --mount=type=cache,target=/root/.npm npm ci
 
 COPY . .
 
-ARG VITE_API_BASE_URL=https://api.destiny-ghost.com
-ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
+ARG VITE_API_BASE_URL_PROD=https://api.destiny-ghost.com
+ENV VITE_API_BASE_URL_PROD=$VITE_API_BASE_URL_PROD
 
 RUN npm run build
 

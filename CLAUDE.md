@@ -32,14 +32,14 @@ npm run lint:fix     # Auto-fix lint issues
 
 ## Architecture
 
-**Framework**: Astro 5 with React 19 islands and Tailwind CSS. All source files are plain JavaScript (no TypeScript).
+**Framework**: Astro 7 with React 19 islands and Tailwind CSS. All source files are plain JavaScript (no TypeScript).
 
 ### Request Flow
 
 1. Astro pages (`src/pages/`) render the shell — static HTML with `client:load` directives for interactive React components
 2. React components use hooks (`src/hooks/`) for state management
 3. Hooks call services (`src/services/`) which make HTTP requests to the external API
-4. API base URL is resolved from env vars (`VITE_API_BASE_URL`)
+4. API base URL is resolved from env vars (`VITE_API_BASE_URL_DEV` / `VITE_API_BASE_URL_PROD`) in `src/config/api.js`
 
 ### Authentication Flow (Bungie OAuth)
 
@@ -55,9 +55,9 @@ npm run lint:fix     # Auto-fix lint issues
 Configured in `.env.example`:
 
 ```
-VITE_API_BASE_URL_DEV=https://api2.destiny-ghost.com
-VITE_API_BASE_URL_PROD=https://api.destiny-ghost.com
-VITE_API_BASE_URL=https://api2.destiny-ghost.com
+VITE_API_BASE_URL_DEV=/api                             # dev; routed through the Vite proxy
+VITE_API_BASE_URL_PROD=https://api.destiny-ghost.com   # build; also a Dockerfile build arg
+TLS_CERT_PATH / TLS_KEY_PATH                           # Caddy wildcard cert (local HTTPS)
 ```
 
 ### API Endpoints (`src/config/api.js`)
